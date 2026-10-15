@@ -1,0 +1,108 @@
+{
+  "hipodrom": "İstanbul",
+  "kosu": 5,
+  "mesafe": 1400,
+  "pist": "Kum",
+  "atlar": [
+    {
+      "numara": 1,
+      "isim": "AT A",
+      "son6": [
+        2,
+        1,
+        4,
+        3,
+        5,
+        2
+      ],
+      "galop": 8,
+      "jokey": 9,
+      "pist_uyumu": 8,
+      "mesafe_uyumu": 9,
+      "kilo": 7,
+      "orijin": 8,
+      "sinif": 8,
+      "kosusart": 9
+    },
+    {
+      "numara": 2,
+      "isim": "AT B",
+      "son6": [
+        1,
+        3,
+        2,
+        6,
+        4,
+        3
+      ],
+      "galop": 9,
+      "jokey": 8,
+      "pist_uyumu": 9,
+      "mesafe_uyumu": 8,
+      "kilo": 8,
+      "orijin": 7,
+      "sinif": 9,
+      "kosusart": 8
+    },
+    {
+      "numara": 3,
+      "isim": "AT C",
+      "son6": [
+        4,
+        2,
+        5,
+        3,
+        6,
+        2
+      ],
+      "galop": 8,
+      "jokey": 8,
+      "pist_uyumu": 8,
+      "mesafe_uyumu": 8,
+      "kilo": 8,
+      "orijin": 8,
+      "sinif": 8,
+      "kosusart": 8
+    },
+    {
+      "numara": 4,
+      "isim": "AT D",
+      "son6": [
+        3,
+        5,
+        4,
+        2,
+        7,
+        4
+      ],
+      "galop": 7,
+      "jokey": 8,
+      "pist_uyumu": 9,
+      "mesafe_uyumu": 7,
+      "kilo": 7,
+      "orijin": 8,
+      "sinif": 7,
+      "kosusart": 8
+    },
+    {
+      "numara": 5,
+      "isim": "AT E",
+      "son6": [
+        6,
+        4,
+        3,
+        7,
+        5,
+        6
+      ],
+      "galop": 9,
+      "jokey": 7,
+      "pist_uyumu": 8,
+      "mesafe_uyumu": 9,
+      "kilo": 9,
+      "orijin": 7,
+      "sinif": 7,
+      "kosusart": 8
+    }
+  ]
+}

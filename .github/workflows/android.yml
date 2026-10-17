@@ -4,7 +4,7 @@ name: Android APK
 on:
   workflow_dispatch:
   push:
-    branches: [ "main" ]
+    branches: [main]
 
 jobs:
   build:
@@ -16,7 +16,7 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install dependencies
+      - name: Install system dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y \
@@ -27,44 +27,31 @@ jobs:
           python -m pip install --upgrade pip
           pip install buildozer cython
 
-                  - name: Accept Android SDK licenses
+      - name: Initialize Android SDK
+        continue-on-error: true
         run: |
-          SDK="$HOME/.buildozer/android/platform/android-sdk"
-          SDKMANAGER="$(find "$SDK" -type f -name sdkmanager | head -n 1)"
-          if [ -z "$SDKMANAGER" ]; then
-            echo "sdkmanager bulunamadı"
-            exit 1
-          fi
-          yes | "$SDKMANAGER" --sdk_root="$SDK" --licenses
+          yes | buildozer android debug || true
 
       - name: Install Android build tools
         run: |
           SDK="$HOME/.buildozer/android/platform/android-sdk"
-          SDKMANAGER="$(find "$SDK" -type f -name sdkmanager | head -n 1)"
-          "$SDKMANAGER" --sdk_root="$SDK" "platform-tools" "build-tools;37.0.0"
-
-            - name: Accept Android SDK licenses
-        run: |
-          SDK="$HOME/.buildozer/android/platform/android-sdk"
-          SDKMANAGER="$(find "$SDK" -type f -name sdkmanager | head -n 1)"
+          SDKMANAGER="$(find "$HOME/.buildozer" -type f -name sdkmanager | head -n 1)"
           if [ -z "$SDKMANAGER" ]; then
             echo "sdkmanager bulunamadı"
+            find "$HOME/.buildozer" -maxdepth 6 -type d
             exit 1
           fi
           yes | "$SDKMANAGER" --sdk_root="$SDK" --licenses
-
-      - name: Install Android build tools
-        run: |
-          SDK="$HOME/.buildozer/android/platform/android-sdk"
-          SDKMANAGER="$(find "$SDK" -type f -name sdkmanager | head -n 1)"
-          "$SDKMANAGER" --sdk_root="$SDK" "platform-tools" "build-tools;37.0.0"
+          "$SDKMANAGER" --sdk_root="$SDK" \
+            "platform-tools" "build-tools;37.0.0"
 
       - name: Build APK
-        run: buildozer android debug
-      
+        run: |
+          yes | buildozer android debug
 
-      - name: Save APK
+      - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: AtYarisiAnaliz-APK
           path: bin/*.apk
+          if-no-files-found: error

@@ -7,6 +7,8 @@ source.include_exts = py,json
 version = 1.0
 requirements = python3,kivy
 p4a.branch = develop
+p4a.branch = develop
+p4a.commit = 9a7694e
 orientation = portrait
 fullscreen = 0
 [buildozer]
